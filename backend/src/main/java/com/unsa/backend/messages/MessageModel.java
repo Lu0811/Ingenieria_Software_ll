@@ -16,7 +16,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "message")
-@Getter @Setter
+@Getter
+@Setter
 public class MessageModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +32,7 @@ public class MessageModel {
     private Date createdAt;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
@@ -40,5 +42,15 @@ public class MessageModel {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = new Date();
+    }
+
+    private String content;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

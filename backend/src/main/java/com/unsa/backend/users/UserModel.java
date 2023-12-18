@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }) })
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -57,8 +57,7 @@ public class UserModel implements UserDetails {
     @ElementCollection
     @CollectionTable(name = "user_following", joinColumns = @JoinColumn(name = "user_id"))
     private List<Long> following;
-    
-    
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
